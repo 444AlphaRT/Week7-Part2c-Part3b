@@ -2,46 +2,50 @@ using UnityEngine;
 
 public class SimpleChest : MonoBehaviour
 {
-    // îùúðéí ôøèééí ìðéäåì îöá åøðãøø
+    // משתנים למעקב אחרי מצב התיבה ורכיב התצוגה שלה
     private bool isOpen = false;
     private Renderer chestRenderer;
+
+    // משתנים לקביעת החומרים (Materials) במצבים שונים
     public Material openMaterial;
     public Material closedMaterial;
 
     void Start()
     {
-        // ÷áìú øëéá ä-Renderer ùîðäì àú îøàä äàåáéé÷è
+        // מציאת רכיב ה-Renderer שאחראי על המראה של האובייקט
         chestRenderer = GetComponent<Renderer>();
+
+        // בדיקה שהרכיבים קיימים והגדרת המראה ההתחלתי לסגור
         if (chestRenderer != null && closedMaterial != null)
         {
-            // äâãøú äîøàä ääúçìúé (ñâåø)
             chestRenderer.material = closedMaterial;
         }
     }
 
-    // ôåð÷öéä ùîáöòú àú äàéðèøà÷öéä (ð÷øàú òì éãé äùç÷ï)
+    // פונקציה המופעלת כאשר השחקן לוחץ על מקש האינטראקציה (למשל E)
     public void Interact()
     {
-        isOpen = !isOpen; // äåôê àú äîöá
+        // שינוי המצב מבוליאני: אמת הופך לשקר ולהיפך
+        isOpen = !isOpen; 
 
         if (chestRenderer != null)
         {
             if (isOpen)
             {
+                // עדכון ויזואלי למצב פתוח
                 chestRenderer.material = openMaterial;
-                Debug.Log("Chest Opened! Found some loot.");
+                Debug.Log("Chest Opened");
             }
             else
             {
                 chestRenderer.material = closedMaterial;
-                Debug.Log("Chest Closed.");
+                Debug.Log("Chest Closed");
             }
         }
     }
 
-    // ôåð÷öéä ùîçæéøä àú äè÷ñè ùéåöâ ìùç÷ï
     public string GetPrompt()
     {
-        return isOpen ? "Press E to Close Chest" : "Press E to Open Chest";
+        return isOpen ? "Press E to Close" : "Press E to Open";
     }
 }
