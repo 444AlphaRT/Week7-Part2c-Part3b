@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleChest : MonoBehaviour
 {
-    // משתנים פרטיים לניהול מצב ורנדרר
+    // ֳ®ֳ¹ֳ÷ֳ°ֳ©ֳ­ ֳ´ֳ¸ֳ¨ֳ©ֳ©ֳ­ ֳ¬ֳ°ֳ©ֳ₪ֳ¥ֳ¬ ֳ®ֳ¶ֳ¡ ֳ¥ֳ¸ֳ°ֳ£ֳ¸ֳ¸
     private bool isOpen = false;
     private Renderer chestRenderer;
     public Material openMaterial;
@@ -10,19 +10,19 @@ public class SimpleChest : MonoBehaviour
 
     void Start()
     {
-        // קבלת רכיב ה-Renderer שמנהל את מראה האובייקט
+        // ֳ·ֳ¡ֳ¬ֳ÷ ֳ¸ֳ«ֳ©ֳ¡ ֳ₪-Renderer ֳ¹ֳ®ֳ°ֳ₪ֳ¬ ֳ ֳ÷ ֳ®ֳ¸ֳ ֳ₪ ֳ₪ֳ ֳ¥ֳ¡ֳ©ֳ©ֳ·ֳ¨
         chestRenderer = GetComponent<Renderer>();
         if (chestRenderer != null && closedMaterial != null)
         {
-            // הגדרת המראה ההתחלתי (סגור)
+            // ֳ₪ֳ¢ֳ£ֳ¸ֳ÷ ֳ₪ֳ®ֳ¸ֳ ֳ₪ ֳ₪ֳ₪ֳ÷ֳ§ֳ¬ֳ÷ֳ© (ֳ±ֳ¢ֳ¥ֳ¸)
             chestRenderer.material = closedMaterial;
         }
     }
 
-    // פונקציה שמבצעת את האינטראקציה (נקראת על ידי השחקן)
+    // ֳ´ֳ¥ֳ°ֳ·ֳ¶ֳ©ֳ₪ ֳ¹ֳ®ֳ¡ֳ¶ֳ²ֳ÷ ֳ ֳ÷ ֳ₪ֳ ֳ©ֳ°ֳ¨ֳ¸ֳ ֳ·ֳ¶ֳ©ֳ₪ (ֳ°ֳ·ֳ¸ֳ ֳ÷ ֳ²ֳ¬ ֳ©ֳ£ֳ© ֳ₪ֳ¹ֳ§ֳ·ֳ¯)
     public void Interact()
     {
-        isOpen = !isOpen; // הופך את המצב
+        isOpen = !isOpen; // ֳ₪ֳ¥ֳ´ֳ× ֳ ֳ÷ ֳ₪ֳ®ֳ¶ֳ¡
 
         if (chestRenderer != null)
         {
@@ -39,7 +39,7 @@ public class SimpleChest : MonoBehaviour
         }
     }
 
-    // פונקציה שמחזירה את הטקסט שיוצג לשחקן
+    // ֳ´ֳ¥ֳ°ֳ·ֳ¶ֳ©ֳ₪ ֳ¹ֳ®ֳ§ֳ¦ֳ©ֳ¸ֳ₪ ֳ ֳ÷ ֳ₪ֳ¨ֳ·ֳ±ֳ¨ ֳ¹ֳ©ֳ¥ֳ¶ֳ¢ ֳ¬ֳ¹ֳ§ֳ·ֳ¯
     public string GetPrompt()
     {
         return isOpen ? "Press E to Close Chest" : "Press E to Open Chest";
