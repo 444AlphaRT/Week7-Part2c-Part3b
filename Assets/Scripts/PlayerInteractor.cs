@@ -2,30 +2,30 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    // ощърд щйзжйч дфрйд маебййчи д-SimpleChest дрелзй биеез
+    // Г®Г№ГєГ°Г¤ Г№Г©Г§Г¦Г©Г· Г¤ГґГ°Г©Г¤ Г¬Г ГҐГЎГ©Г©Г·ГЁ Г¤-SimpleChest Г¤Г°ГҐГ«Г§Г© ГЎГЁГҐГҐГ§
     private SimpleChest currentInteractable = null;
     public KeyCode interactionKey = KeyCode.E;
 
-    // рчша лащш дщзчп (дчемййгш щме) рлрс м-Trigger
+    // Г°Г·ГёГ  Г«Г Г№Гё Г¤Г№Г§Г·ГЇ (Г¤Г·ГҐГ¬Г©Г©ГЈГё Г№Г¬ГҐ) Г°Г«Г°Г± Г¬-Trigger
     void OnTriggerEnter(Collider other)
     {
-        // орсд моцеа аъ шлйб SimpleChest тм даебййчи
+        // Г®Г°Г±Г¤ Г¬Г®Г¶ГҐГ  Г Гє ГёГ«Г©ГЎ SimpleChest ГІГ¬ Г¤Г ГҐГЎГ©Г©Г·ГЁ
         SimpleChest interactable = other.GetComponent<SimpleChest>();
 
         if (interactable != null)
         {
             currentInteractable = interactable;
-            // дцв аъ ддегтд дшмеерийъ бчерсем
+            // Г¤Г¶Гў Г Гє Г¤Г¤ГҐГЈГІГ¤ Г¤ГёГ¬ГҐГҐГ°ГЁГ©Гє ГЎГ·ГҐГ°Г±ГҐГ¬
             Debug.Log("Entered Interaction Zone. " + interactable.GetPrompt());
         }
     }
 
-    // рчша лащш дщзчп йеца од-Trigger
+    // Г°Г·ГёГ  Г«Г Г№Гё Г¤Г№Г§Г·ГЇ Г©ГҐГ¶Г  Г®Г¤-Trigger
     void OnTriggerExit(Collider other)
     {
         SimpleChest interactable = other.GetComponent<SimpleChest>();
 
-        // оеега щарзре йецайн оаеъе аебййчи айъе дълеере мчййн айришачцйд
+        // Г®ГҐГҐГЈГ  Г№Г Г°Г§Г°ГҐ Г©ГҐГ¶Г Г©Г­ Г®Г ГҐГєГҐ Г ГҐГЎГ©Г©Г·ГЁ Г Г©ГєГҐ Г¤ГєГ«ГҐГҐГ°ГҐ Г¬Г·Г©Г©Г­ Г Г©Г°ГЁГёГ Г·Г¶Г©Г¤
         if (interactable != null && interactable == currentInteractable)
         {
             currentInteractable = null;
@@ -35,11 +35,11 @@ public class PlayerInteractor : MonoBehaviour
 
     void Update()
     {
-        // ан йщ аебййчи айришачийбй жойп едщзчп мзх тм очщ дайришачцйд
+        // Г Г­ Г©Г№ Г ГҐГЎГ©Г©Г·ГЁ Г Г©Г°ГЁГёГ Г·ГЁГ©ГЎГ© Г¦Г®Г©ГЇ ГҐГ¤Г№Г§Г·ГЇ Г¬Г§Гµ ГІГ¬ Г®Г·Г№ Г¤Г Г©Г°ГЁГёГ Г·Г¶Г©Г¤
         if (currentInteractable != null && Input.GetKeyDown(interactionKey))
         {
             currentInteractable.Interact();
-            // дцв аъ д-prompt дзгщ мазш дфтемд
+            // Г¤Г¶Гў Г Гє Г¤-prompt Г¤Г§ГЈГ№ Г¬Г Г§Гё Г¤ГґГІГҐГ¬Г¤
             Debug.Log(currentInteractable.GetPrompt());
         }
     }
