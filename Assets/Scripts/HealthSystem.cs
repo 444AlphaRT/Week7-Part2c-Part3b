@@ -2,26 +2,22 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    // משתנים ציבוריים להגדרה ב-Inspector
     public int maxHealth = 100;
-
-    // משתנה פרטי למעקב אחרי מצב החיים הנוכחי
     private int currentHealth;
 
     void Start()
     {
+        // Initialize health
         currentHealth = maxHealth;
-        Debug.Log("Player Health Initialized: " + currentHealth);
     }
 
-    // פונקציה ציבורית שאויבים יכולים לקרוא לה כדי לפגוע בשחקן
     public void TakeDamage(int damageAmount)
     {
-        if (currentHealth <= 0) return; // אם כבר מת, אין צורך להמשיך
+        if (currentHealth <= 0) return;
 
+        // Reduce health and log status
         currentHealth -= damageAmount;
-
-        Debug.Log("Player took " + damageAmount + " damage. Remaining Health: " + currentHealth);
+        Debug.Log("Player Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -31,12 +27,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("GAME OVER! Player has died.");
-
-        // כאן היינו מכניסים קוד לסיום המשחק (לדוגמה, עצירת זמן, טעינת מסך הפסד)
-        // Time.timeScale = 0f; 
-
-        // נסיר את השחקן מהסצנה לצורך הדגמה
-        Destroy(gameObject);
+        Debug.Log("Player Died!");
+        // Add game over or respawn logic here
     }
 }

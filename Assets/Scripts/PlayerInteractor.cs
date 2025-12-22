@@ -2,30 +2,30 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    // משתנה שיחזיק הפניה לאובייקט ה-SimpleChest הנוכחי בטווח
+    // Reference to the chest object currently within range
     private SimpleChest currentInteractable = null;
     public KeyCode interactionKey = KeyCode.E;
 
-    // נקרא כאשר השחקן (הקוליידר שלו) נכנס ל-Trigger
+    // Triggered when the player's collider enters a trigger zone
     void OnTriggerEnter(Collider other)
     {
-        // מנסה למצוא את רכיב SimpleChest על האובייקט
+        // Attempt to find the SimpleChest component on the object
         SimpleChest interactable = other.GetComponent<SimpleChest>();
 
         if (interactable != null)
         {
             currentInteractable = interactable;
-            // הצג את ההודעה הרלוונטית בקונסול
+            // Display interaction prompt in the console
             Debug.Log("Entered Interaction Zone. " + interactable.GetPrompt());
         }
     }
 
-    // נקרא כאשר השחקן יוצא מה-Trigger
+    // Triggered when the player's collider exits a trigger zone
     void OnTriggerExit(Collider other)
     {
         SimpleChest interactable = other.GetComponent<SimpleChest>();
 
-        // מוודא שאנחנו יוצאים מאותו אובייקט איתו התכוונו לקיים אינטראקציה
+        // Ensure we are clearing the reference to the correct object
         if (interactable != null && interactable == currentInteractable)
         {
             currentInteractable = null;
@@ -35,11 +35,11 @@ public class PlayerInteractor : MonoBehaviour
 
     void Update()
     {
-        // אם יש אובייקט אינטראקטיבי זמין והשחקן לחץ על מקש האינטראקציה
+        // If an interactable object is available and the player presses the key
         if (currentInteractable != null && Input.GetKeyDown(interactionKey))
         {
             currentInteractable.Interact();
-            // הצג את ה-prompt החדש לאחר הפעולה
+            // Display the updated prompt after interaction
             Debug.Log(currentInteractable.GetPrompt());
         }
     }

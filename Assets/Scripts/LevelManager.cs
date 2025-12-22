@@ -5,13 +5,13 @@ public class LevelManager : MonoBehaviour
 {
     void Update()
     {
-        // לחיצה על 1 מעבירה לחלק הראשון
+        // move to part 2
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SceneManager.LoadScene("sence-part 2c");
         }
 
-        // לחיצה על 2 מעבירה לחלק השני
+        // move to part 3
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene("sence-part 3b");
