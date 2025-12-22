@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿using System.Collections;
 using UnityEngine;
+=======
+﻿using UnityEngine;
+using System.Collections; 
+>>>>>>> 30557aa69e5af150de0bfff82140900144dbd040
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -8,7 +13,10 @@ public class EnemyShooting : MonoBehaviour
     public float fireRate = 1f;
     public float lineDuration = 0.05f;
 
+<<<<<<< HEAD
     private LineRenderer lineRenderer;
+=======
+>>>>>>> 30557aa69e5af150de0bfff82140900144dbd040
     private Transform playerTarget;
     private float nextFireTime;
 
@@ -18,7 +26,11 @@ public class EnemyShooting : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null) playerTarget = player.transform;
 
+<<<<<<< HEAD
         // Setup the LineRenderer for shot visualization
+=======
+        //  משיגים את רכיב ה-Line Renderer
+>>>>>>> 30557aa69e5af150de0bfff82140900144dbd040
         lineRenderer = GetComponent<LineRenderer>();
         if (lineRenderer != null) lineRenderer.enabled = false;
     }
