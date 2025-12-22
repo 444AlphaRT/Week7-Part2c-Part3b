@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections; // **חובה** עבור קורוטינות
+using System.Collections; 
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -10,7 +10,6 @@ public class EnemyShooting : MonoBehaviour
     public float lineDuration = 0.05f; // משך זמן הופעת הקו (כדי שייראה כהרף עין)
     private LineRenderer lineRenderer;
 
-    // הפניה לטרנספורם של השחקן (אותו נמצא ב-Start)
     private Transform playerTarget;
     private float nextFireTime;
 
@@ -28,7 +27,7 @@ public class EnemyShooting : MonoBehaviour
             enabled = false;
         }
 
-        // 🌟 משיגים את רכיב ה-Line Renderer
+        //  משיגים את רכיב ה-Line Renderer
         lineRenderer = GetComponent<LineRenderer>();
         if (lineRenderer == null)
         {
